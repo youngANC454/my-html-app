@@ -35,14 +35,14 @@ on:
 
           sleep 5
 
-        response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
+          response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
 
-        if [ $response -eq 200 ]; then
-          echo "Container passed"
-        else
-          echo "Container test failed $response"
-          exit 1
-        fi
+          if [ $response -eq 200 ]; then
+            echo "Container passed"
+          else
+            echo "Container test failed $response"
+            exit 1
+         : fi
 
         docker stop test-container
         docker rm test-container
