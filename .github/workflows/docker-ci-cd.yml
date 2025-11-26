@@ -11,14 +11,14 @@ on:
       runs-on: ubuntu-latest
 
       steps:
-      - name: Chekout code
+      - name: Checkout code
         uses: actions/chekout@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
       - name: Login to Docker hub
-        uses: docker /login-action@v2
+        uses: docker/login-action@v2
         with: 
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -37,27 +37,27 @@ on:
 
         response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
 
-        if [ response -eq 200 ]; then
+        if [ $response -eq 200 ]; then
           echo "Container passed"
         else
           echo "Container test failed $response"
           exit 1
         fi
 
-        docker stop test-constainer
+        docker stop test-container
         docker rm test-container
 
       - name: Push to Docker Hub
-        if: github.red == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: |
-          docker tag my-html-app:latest ${{ secrets.DOCKER_USERNMAE }}/my-html-app:latest
-          docker tag my-html-app:latest ${{ secrets.DOCKER_PASSWORD }}/my-html-app:latest
-          docker push $${ secrets.DOCKER_USERNAME }}/my-html-app:latest
+          docker tag my-html-app:latest ${{ secrets.DOCKER_USERNAME }}/my-html-app:latest
+          docker tag my-html-app:latest ${{ secrets.DOCKER_USERNAME }}/my-html-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-html-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/my-html-app:${{ github.sha }}
           echo " Image pushed to Docker Hub"
-        constinue-on-error: true
+        continue-on-error: true
       - name: Deploy Application
-        if: github.ref == 'refs/head/main'
+        if: github.ref == 'refs/heads/main'
         run: |
           echo " Deploy Done "
           echo " App is ready"
