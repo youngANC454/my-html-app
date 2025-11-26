@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Docker CI/CD Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 10px 5px;
+            font-weight: bold;
+        }
+        
+        .status {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .emoji {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🚀</div>
+        <h1>Docker CI/CD Pipeline</h1>
+        <p>Welcome to my automated deployment demo!</p>
+        <p>This webpage is automatically built, tested, and deployed using Docker and GitHub Actions.</p>
+        
+        <div>
+            <span class="badge">Docker</span>
+            <span class="badge">GitHub Actions</span>
+            <span class="badge">Nginx</span>
+        </div>
+        
+        <div class="status">
+            <strong>✅ Pipeline Status: Active</strong>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                Version 1.0 | Last deployed: Auto
+            </p>
+        </div>
+    </div>
+</body>
+</html>
